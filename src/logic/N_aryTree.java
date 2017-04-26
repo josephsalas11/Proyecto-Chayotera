@@ -1,52 +1,52 @@
 package logic;
 
+import ui.Root;
+
 public class N_aryTree<T> {
 	
-	private Node<T> branch;
+	private Node<T> root;
+	private Node<T> actualNode;
+	private int maxBranch;
 	
 	
-	
-	public void N_aryTree()
+	public N_aryTree(int pMaxBranch)
 	{
-		this.branch = null;
+		maxBranch = pMaxBranch;
 	}
 	
 	
-//******************************************
-	public void addNode(Node<T> pNode)
+	
+	public void addNode( Node<T> Child ,Node<T> Parent)
 	{
-		Node start = new Node();
-		if(branch == null)
+		Node auxiliar = new Node();
+		
+		if (root==null)
 		{
-			branch = start;
+			auxiliar = root;
 		}else
 		{
-			Node auxiliarNode = branch;
-			Node father;
-			
-			while(true)
-			{
-				father = auxiliarNode;
-				//if(pNode)
-			}
+			this.recAddChild(root, Parent, Child);
 		}
-	}
-//********************************************
-	
-	
-	
-	
-	
-	
-	
-	public void addNodeValue(T pValue)
-	{
 		
 	}
 	
-	public Node<T> findNode(T pValue)
-	 	{
-	 		return null;
-	 	}
+	
+	public void recAddChild(Node<T> pActualNode, Node<T> Parent, Node<T> Child)
+	{
+		if (pActualNode.get_Data().equals(Parent.get_Data()))
+		{
+			pActualNode.addChild(pActualNode);
+		}
+		
+	}
+	
+	
+//Getters and Setters
+	public Node<T> getRoot() {
+		return this.root;
+	}
+	public void setRoot(Node<T> root) {
+		this.root = root;
+	}
 
 }

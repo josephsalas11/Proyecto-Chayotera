@@ -16,6 +16,8 @@ import javax.swing.JSpinner;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class ChayoteCanvas extends JFrame {
 	
