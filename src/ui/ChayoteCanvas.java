@@ -7,6 +7,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Canvas;
 import javax.swing.border.TitledBorder;
+
+import logic.N_aryTree;
+import logic.Node;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,13 +22,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
+import ui.Root;
+import logic.Process; 
 
 public class ChayoteCanvas extends JFrame {
 	
 	
 	private int chayotesPerSecond;
 	private int probability;
-	private int childs;
+	private int chayotes;
 	private JPanel contentPane;
 	private JTextField numeroChayotes;
 	private JTextField probaChayotes;
@@ -108,15 +115,21 @@ public class ChayoteCanvas extends JFrame {
 				}
 				else if(Integer.parseInt(probaChayotes.getText())<70 || Integer.parseInt(probaChayotes.getText())>90)
 				{
-					JOptionPane.showMessageDialog(null, "Ingrese una probabilidad entre 70% y 90% ", "Error", 
+					JOptionPane.showMessageDialog(null, "Ingrese una probabilidad entre 70% y 90% y unicamente el numero", "Error", 
 							JOptionPane.ERROR_MESSAGE);
 					probaChayotes.setText(null);
 					numeroChayotes.setText(null);
 				}
 				
-				childs = Integer.parseInt(numeroChayotes.getText());
+				chayotes = Integer.parseInt(numeroChayotes.getText());
 				probability =  Integer.parseInt(probaChayotes.getText());
 				chayotesPerSecond = (int) spinnerSeconds.getValue();
+				Process hilo = new Process(canvas);
+				hilo.run();
+				
+				
+				
+				
 			}
 		});
 		btnIniciar.setBounds(855, 20, 89, 23);

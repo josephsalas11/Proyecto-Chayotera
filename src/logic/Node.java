@@ -7,11 +7,14 @@ public class Node<T> {
 	private T _Data;
 	private ArrayList<Node<T>> Branches;
 	private Node<T> Parent;
+	private boolean ArrayLoc= true;
+	private static int limit = 2; 
 
 
 
-	public Node()
+	public Node(T _Data)
 	{
+		this._Data = _Data;
 		Branches = new ArrayList<Node<T>>();
 	}
 	
@@ -20,6 +23,11 @@ public class Node<T> {
 	{
 		pChild.Parent = this;
 		Branches.add(pChild);
+		int tamaño = Branches.size();
+		if (tamaño > limit)
+		{
+			ArrayLoc = false;
+		}
 	}
 	
 	
@@ -63,4 +71,39 @@ public class Node<T> {
 		Parent = parent;
 	}
 
+
+	public ArrayList<Node<T>> getBranches() {
+		return Branches;
+	}
+
+
+	public void setBranches(ArrayList<Node<T>> branches) {
+		Branches = branches;
+	}
+
+
+	public boolean isArrayLoc() {
+		return ArrayLoc;
+	}
+
+
+	public void setArrayLoc(boolean arrayLoc) {
+		ArrayLoc = arrayLoc;
+	}
+
+
+	public static int getLimit() {
+		return limit;
+	}
+
+
+	public static void setLimit(int limit) {
+		Node.limit = limit;
+	}
+
+
+	
+	
+	
+		
 }
