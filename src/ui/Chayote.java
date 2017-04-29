@@ -24,12 +24,6 @@ public class Chayote extends Figure{
 	}
 	
 	
-@Override
-	public String toString() {
-		return "Chayote [_Diameter=" + _Diameter +  ", _CoorX=" + _CoorX + ", _CoorY=" + _CoorY
-				+ "]";
-	}
-
 //Getters and Setters
 	public double get_Diameter() {
 		return _Diameter;

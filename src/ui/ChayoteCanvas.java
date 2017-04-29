@@ -124,15 +124,36 @@ public class ChayoteCanvas extends JFrame {
 				chayotes = Integer.parseInt(numeroChayotes.getText());
 				probability =  Integer.parseInt(probaChayotes.getText());
 				chayotesPerSecond = (int) spinnerSeconds.getValue();
-				Process hilo = new Process(canvas);
-				hilo.run();
+				Process Thread = new Process(canvas);
+				try {
+					Thread.sleep(chayotesPerSecond*100);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
+				//Hilo de ejecucion
+				try {
+					
 				
-				
+					Thread.run(chayotes, probability, chayotesPerSecond);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}	
 				
 			}
 		});
 		btnIniciar.setBounds(855, 20, 89, 23);
 		contentPane.add(btnIniciar);
+		
+		JButton btnDetener = new JButton("DETENER");
+		btnDetener.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+
+			}
+		});
+		btnDetener.setBounds(970, 20, 89, 23);
+		contentPane.add(btnDetener);
 	}
 }

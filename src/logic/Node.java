@@ -8,7 +8,7 @@ public class Node<T> {
 	private ArrayList<Node<T>> Branches;
 	private Node<T> Parent;
 	private boolean ArrayLoc= true;
-	private static int limit = 2; 
+	private  int limit = 2; 
 
 
 
@@ -36,21 +36,6 @@ public class Node<T> {
         Branches.add(pIndex, pChild);
     }
     
-
-    public Node<T> getChildIndex(int pIndex)  {
-        return Branches.get(pIndex);
-    }
-	
-	
-	
-	
-	public T getNodeValue(int pIndex)
-	{
-		return null;
-	}
-	
-	
-	
 //Getters and Setters
 	public T get_Data() {
 		return _Data;
@@ -92,18 +77,12 @@ public class Node<T> {
 	}
 
 
-	public static int getLimit() {
+	public int getLimit() {
 		return limit;
 	}
 
 
-	public static void setLimit(int limit) {
-		Node.limit = limit;
-	}
-
-
-	
-	
-	
-		
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}		
 }

@@ -8,8 +8,10 @@ public class Figure {
 	protected int _CoorX;
 	protected int _CoorY;
 	protected Color _Color;
+	protected boolean Type;
 	
 	
+	//Constructors 
 	public Figure()
 	{
 		
@@ -20,6 +22,11 @@ public class Figure {
 		this._CoorX = p_CoorX;
 		this._CoorY = p_CoorY;
 		this._Color = p_Color;
+	}
+	
+	
+	public void paint(Graphics graphics) {
+		
 	}
 	
 	
@@ -41,8 +48,15 @@ public class Figure {
 		this._CoorY = _CoorY;
 	}
 
-	public void paint(Graphics graphics) {
-		
+	
+	public boolean isType() {
+		return Type;
 	}
+
+	public void setType(boolean type) {
+		Type = type;
+	}
+
+	
 
 }

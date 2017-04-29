@@ -2,19 +2,17 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Polygon;
 
-public class Root {
+public class Root extends Figure{
 	
-	private  int _CoorX;
-	private int _CoorY;
 	private double _Base;
 	private double _Height;
 	
 
-	public Root(int p_CoorX, int p_CoorY,  double p_Base, double p_Height)
+	public Root(int _CoorX, int _CoorY, Color _Color, double p_Base, double p_Height)
 	{
-		this._CoorX = p_CoorX;
-		this._CoorY = p_CoorY;
+		super(_CoorX, _CoorY, _Color);
 		this._Base = p_Base;
 		this._Height = p_Height;
 	}
@@ -22,33 +20,20 @@ public class Root {
 	
 	public void paint(Graphics g)
 	{
-		g.drawLine(_CoorX, _CoorY, (int)(_CoorX+(_Base/2)), (int)(_CoorY+_Height));
+		
+		int xPoly[] = {15, 25, 32, 37, 45, 27};
+        int yPoly[] = {15, 10, 12, 22, 25, 37};
+        Polygon poly = new Polygon(xPoly, yPoly, xPoly.length);
 		g.setColor(new Color(56,40,5));
-		g.drawLine((int)(_CoorX+(_Base/2)), (int)(_CoorY+_Height), (int) (_CoorX-(_Base/2)), (int) (_CoorY+_Height));
-		g.setColor(new Color(56,40,5));
-		g.drawLine(_CoorX,_CoorY,(int)(_CoorX-(_Base/2)), (int)(_CoorY+_Height));
-		g.setColor(new Color(56,40,5));
-	}
-	
-	
-@Override
-	public String toString() {
-		return "Branch [_CoorX=" + _CoorX + ", _CoorY=" + _CoorY + ", _Base=" + _Base + ", _Height=" + _Height + "]";
-	}
+        g.drawPolygon(poly);
+        g.fillPolygon(poly);
 
+	}
+	
+	
 	//Getters and Setters
-	public int get_CoorX() {
-		return _CoorX;
-	}
-	public void set_CoorX(int _CoorX) {
-		this._CoorX = _CoorX;
-	}
-	public int get_CoorY() {
-		return _CoorY;
-	}
-	public void set_CoorY(int _CoorY) {
-		this._CoorY = _CoorY;
-	}
+	
+	
 	public double get_Base() {
 		return _Base;
 	}

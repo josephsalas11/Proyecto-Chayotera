@@ -1,7 +1,9 @@
 package logic;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
+import ui.Figure;
 import ui.Root;
 
 public class N_aryTree<T> {
@@ -15,7 +17,7 @@ public class N_aryTree<T> {
 	private N_aryTree(int pMaxBranch)
 	{
 		maxBranch = pMaxBranch;
-		root = new Node(new Root(15, 15, 20, 20));
+		root = new Node(new Root(15, 15,Color.BLUE,20, 20));
 	}
 	
 	public static N_aryTree getSingletonInstance(int maxBranch)
@@ -26,7 +28,7 @@ public class N_aryTree<T> {
 		}
 		else
 		{
-			System.out.println("No se puede crear el objeto porque ya existe un objeto de la clase SoyUnico");
+			System.out.println("No se puede crear el objeto porque ya existe un objeto de la clase N_aryTree");
 		}
 		return N_aryTree;
 	}
@@ -35,26 +37,38 @@ public class N_aryTree<T> {
 
 	public boolean recAddChild(Node<T> pParent, Node<T> pChild)
 	{
-		if(pParent.isArrayLoc())
+		
+		Figure figurita = (Figure)pParent.get_Data();
+		
+		if(figurita.isType()==false)
 		{
-			pParent.addChild(pChild);
-			//System.out.println(pChild.get_Data());
-			return true;
-		}
-		else
-		{
-			for (int i=0; i<maxBranch; i++)
+			if(pParent.isArrayLoc())
 			{
-				if ((recAddChild(pParent.getBranches().get(i),pChild)==true))
+				pParent.addChild(pChild);
+				
+				return true;
+			}
+			else
+			{
+				for (int i=0; i<maxBranch; i++) //Recusion Process to add nodes
 				{
-					return true;
+					if ((recAddChild(pParent.getBranches().get(i),pChild)==true))
+					{
+						return true;
+					}
+					
 				}
+				return false;
+				
 				
 			}
+		}else
+		{
 			return false;
-			
-			
 		}
+		
+		
+		
 	}
 	
 	
